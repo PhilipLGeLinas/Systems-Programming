@@ -1,9 +1,17 @@
 import java.util.*;
 
 public class Scheduler extends Thread {
-    private Vector queue;
+
+    // Part 2: Step 1
+    private Vector queue_0;
+    private Vector queue_1;
+    private Vector queue_2;
+
+    // private Vector queue;
     private int timeSlice;
-    private static final int DEFAULT_TIME_SLICE = 1000;
+
+    private static final int Q0_TIME_SLICE = 500;
+    private static final int Q1_TIME_SLICE = 1000;
 
     // New data added to p161 
     private boolean[] tids; // Indicate which ids have been used
@@ -47,9 +55,9 @@ public class Scheduler extends Thread {
     // Retrieve the current thread's TCB from the queue
     public TCB getMyTcb() {
         Thread myThread = Thread.currentThread(); // Get my thread object
-        synchronized (queue) {
-            for (int i = 0; i < queue.size(); i++) {
-                TCB tcb = (TCB) queue.elementAt(i);
+        synchronized (queue_0) {
+            for (int i = 0; i < queue_0.size(); i++) {
+                TCB tcb = (TCB) queue_0.elementAt(i);
                 Thread thread = tcb.getThread();
                 if (thread == myThread) // if this is my TCB, return it
                     return tcb;
@@ -65,14 +73,18 @@ public class Scheduler extends Thread {
     }
 
     public Scheduler() {
-        timeSlice = DEFAULT_TIME_SLICE;
-        queue = new Vector();
+        timeSlice = Q0_TIME_SLICE;
+        Vector queue_0 = new Vector();
+        Vector queue_1 = new Vector();
+        Vector queue_2 = new Vector();
         initTid(DEFAULT_MAX_THREADS);
     }
 
     public Scheduler(int quantum) {
         timeSlice = quantum;
-        queue = new Vector();
+        Vector queue_0 = new Vector();
+        Vector queue_1 = new Vector();
+        Vector queue_2 = new Vector();
         initTid(DEFAULT_MAX_THREADS);
     }
 
@@ -80,7 +92,9 @@ public class Scheduler extends Thread {
     // A constructor to receive the max number of threads to be spawned
     public Scheduler(int quantum, int maxThreads) {
         timeSlice = quantum;
-        queue = new Vector();
+        Vector queue_0 = new Vector();
+        Vector queue_1 = new Vector();
+        Vector queue_2 = new Vector();
         initTid(maxThreads);
     }
 
@@ -100,7 +114,7 @@ public class Scheduler extends Thread {
         if (tid == -1)
             return null;
         TCB tcb = new TCB(t, tid, pid); // create a new TCB
-        queue.add(tcb);
+        queue_0.add(tcb); // Part 2: Step 2
         return tcb;
     }
 
@@ -128,12 +142,12 @@ public class Scheduler extends Thread {
 
         while (true) {
             try {
-                // get the next TCB and its thrad
-                if (queue.size() == 0)
+                // get the next TCB and its thread
+                if (queue_0.size() == 0)
                     continue;
-                TCB currentTCB = (TCB) queue.firstElement();
+                TCB currentTCB = (TCB) queue_0.firstElement();
                 if (currentTCB.getTerminated() == true) {
-                    queue.remove(currentTCB);
+                    queue_0.remove(currentTCB);
                     returnTid(currentTCB.getTid());
                     continue;
                 }
@@ -145,21 +159,21 @@ public class Scheduler extends Thread {
                     else {
                         // Spawn must be controlled by Scheduler
                         // Scheduler must start a new thread
-                        current.start();
                         // current.setPriority(4);
+                        current.start();
                     }
                 }
 
                 schedulerSleep();
                 // System.out.println("* * * Context Switch * * * ");
 
-                synchronized (queue) {
+                synchronized (queue_0) {
                     if (current != null && current.isAlive()) {
                         // current.setPriority(2);
                         current.suspend();
                     }
-                    queue.remove(currentTCB); // rotate this TCB to the end
-                    queue.add(currentTCB);
+                    queue_0.remove(currentTCB); // rotate this TCB to the end
+                    queue_0.add(currentTCB);
                 }
             } catch (NullPointerException e3) {
             }
