@@ -93,7 +93,7 @@ public class Scheduler extends Thread {
 
     // A modified addThread of p161 example
     public TCB addThread(Thread t) {
-        t.setPriority(2);
+        // t.setPriority(2);
         TCB parentTcb = getMyTcb(); // get my TCB and find my TID
         int pid = (parentTcb != null) ? parentTcb.getTid() : -1;
         int tid = getNewTid(); // get a new TID
@@ -124,8 +124,7 @@ public class Scheduler extends Thread {
     // A modified run of p161
     public void run() {
         Thread current = null;
-
-        this.setPriority(6);
+        // this.setPriority(6);
 
         while (true) {
             try {
@@ -141,12 +140,13 @@ public class Scheduler extends Thread {
                 current = currentTCB.getThread();
                 if (current != null) {
                     if (current.isAlive())
-                        current.setPriority(4);
+                        // current.setPriority(4);
+                        current.resume();
                     else {
                         // Spawn must be controlled by Scheduler
                         // Scheduler must start a new thread
                         current.start();
-                        current.setPriority(4);
+                        // current.setPriority(4);
                     }
                 }
 
@@ -154,8 +154,10 @@ public class Scheduler extends Thread {
                 // System.out.println("* * * Context Switch * * * ");
 
                 synchronized (queue) {
-                    if (current != null && current.isAlive())
-                        current.setPriority(2);
+                    if (current != null && current.isAlive()) {
+                        // current.setPriority(2);
+                        current.suspend();
+                    }
                     queue.remove(currentTCB); // rotate this TCB to the end
                     queue.add(currentTCB);
                 }
