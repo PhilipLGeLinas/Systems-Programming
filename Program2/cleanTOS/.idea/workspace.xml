@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b029f335-da2a-4fd3-abbf-b8af60ffcaf5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cleanTOS.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cache$Entry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cache.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DISK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Directory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Disk.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Disk.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileSystem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileTableEntry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileTableEntry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kernel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kernel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kernel_org.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kernel_quiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Loader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Loader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PingPong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PingPong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueueNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scheduler_fil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shell.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SuperBlock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SyncQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SysLib.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SysLib.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2b.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2b.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2c.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2c.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2d.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2d.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2e.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2e.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test6.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test7a.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test7a.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPingPong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPingPong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2b.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2b.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2c.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2c.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2d.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread2d.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestThread3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CompilerIdC/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Program1.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/Progress/count.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/feature_tests.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/feature_tests.cxx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/Program1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/Program1.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../processes.cpp" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1QfbmV6c3ThG7WTxcfpih55zYfS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Program3" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b029f335-da2a-4fd3-abbf-b8af60ffcaf5" name="Default Changelist" comment="" />
+      <created>1568164756970</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568164756970</updated>
+      <workItem from="1568164758243" duration="2208000" />
+      <workItem from="1568304359083" duration="138000" />
+      <workItem from="1568324588049" duration="311000" />
+      <workItem from="1568333994230" duration="1697000" />
+      <workItem from="1568390653166" duration="5300000" />
+      <workItem from="1568423629757" duration="117000" />
+      <workItem from="1568653808289" duration="1208000" />
+      <workItem from="1568924706716" duration="210000" />
+      <workItem from="1568924941633" duration="1889000" />
+      <workItem from="1569514116585" duration="356000" />
+      <workItem from="1570134397011" duration="23000" />
+      <workItem from="1570134446305" duration="391000" />
+      <workItem from="1570326958267" duration="61000" />
+      <workItem from="1570327187924" duration="8533000" />
+      <workItem from="1571806339475" duration="27000" />
+      <workItem from="1571806391441" duration="179000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
+</project>
