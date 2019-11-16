@@ -5,6 +5,7 @@ import java.util.*;
 import java.lang.reflect.*;
 import java.io.*;
 
+// New Kernel
 public class Kernel {
     // Interrupt requests
     public final static int INTERRUPT_SOFTWARE = 1;  // System calls
@@ -122,16 +123,24 @@ public class Kernel {
                         // now you can access data in buffer
                         return OK;
                     case RAWWRITE: // write a block of data to disk
-                        while (disk.write(param, (byte[]) args) == false)
-                            ; // busy wait
-                        while (disk.testAndResetReady() == false)
-                            ; // busy wait
+                        while (disk.write(param, (byte[]) args) == false) {
+                            // thread is waiting for the disk to accept a request
+                            ioQueue.enqueueAndSleep(1); // relinquish CPU to another ready thread
+                        }
+                        while (disk.testAndResetReady() == false) {
+                            // thread is waiting for the disk to complete a service
+                            ioQueue.enqueueAndSleep(2); // relinquish CPU to another ready thread
+                        }
                         return OK;
                     case SYNC:     // synchronize disk data to a real file
-                        while (disk.sync() == false)
-                            ; // busy wait
-                        while (disk.testAndResetReady() == false)
-                            ; // busy wait
+                        while (disk.sync() == false) {
+                            // thread is waiting for the disk to accept a request
+                            ioQueue.enqueueAndSleep(1); // relinquish CPU to another ready thread
+                        }
+                        while (disk.testAndResetReady() == false) {
+                            // thread is waiting for the disk to complete a service
+                            ioQueue.enqueueAndSleep(2); // relinquish CPU to another ready thread
+                        }
                         return OK;
                     case READ:
                         switch (param) {

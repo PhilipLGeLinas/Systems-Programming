@@ -14,7 +14,7 @@ public class SyncQueue {
     private QueueNode[] queue;
 
     // Initializes the queue array and populates it with QueueNodes.
-    private void initQueue(int size) {
+    private void initializeQueue(int size) {
         this.queue = new QueueNode[size];
         for (int i = 0; i < size; i++) {
             this.queue[i] = new QueueNode();
@@ -23,12 +23,12 @@ public class SyncQueue {
 
     // Generates a new array of QueueNodes of default size.
     public SyncQueue() {
-        this.initQueue(DEFAULT_SIZE);
+        this.initializeQueue(DEFAULT_SIZE);
     }
 
     // Generates a new array of QueueNodes of the given size.
     public SyncQueue(int condMax) {
-        this.initQueue(condMax);
+        this.initializeQueue(condMax);
     }
 
     // Enqueues the calling thread into the queue and sleeps it until a given condition is satisfied.

@@ -5,6 +5,7 @@ import java.util.*;
 import java.lang.reflect.*;
 import java.io.*;
 
+// Old Kernel
 public class Kernel {
     // Interrupt requests
     public final static int INTERRUPT_SOFTWARE = 1;  // System calls
@@ -56,7 +57,7 @@ public class Kernel {
     private static SyncQueue waitQueue;  // for threads to wait for their child
     private static SyncQueue ioQueue;    // I/O queue
 
-    private final static int COND_DISK_REQ = 1; // wait condition 
+    private final static int COND_DISK_REQ = 1; // wait condition
     private final static int COND_DISK_FIN = 2; // wait condition
 
     // Standard input
@@ -89,36 +90,36 @@ public class Kernel {
                         return sysExec((String[]) args);
                     case WAIT:
                         // get the current thread id (use Scheduler.getMyTcb())
-						myTcb = scheduler.getMyTcb();
-						int currentTID = myTcb.getTid();
+                        myTcb = scheduler.getMyTcb();
+                        int currentTID = myTcb.getTid();
                         // let the current thread sleep in waitQueue under the
                         // condition = this thread id (= tcb.getTid())
-						int tid = waitQueue.enqueueAndSleep(currentTID);
+                        int tid = waitQueue.enqueueAndSleep(currentTID);
                         return tid; // return a child thread id who woke me up
                     case EXIT:
                         // get the current thread's parent id (= tcb.getPid())
-						myTcb = scheduler.getMyTcb();
-						int currentPID = myTcb.getPid();
+                        myTcb = scheduler.getMyTcb();
+                        int currentPID = myTcb.getPid();
                         // search waitQueue for and wakes up the thread under the
                         // condition = the current thread's parent id (= tcb.getPid())
-						waitQueue.dequeueAndWakeup(myTcb.getPid());
+                        waitQueue.dequeueAndWakeup(currentPID);
                         // tell the Scheduler to delete the current thread (since it is exiting)
-						scheduler.deleteThread();
+                        scheduler.deleteThread();
                         return OK;
                     case SLEEP:   // sleep a given period of milliseconds
                         scheduler.sleepThread(param); // param = milliseconds
                         return OK;
                     case RAWREAD: // read a block of data from disk
-						// a disk read operation
+                        // a disk read operation
                         while (disk.read(param, (byte[]) args) == false) {
-                        	// thread is waiting for the disk to accept a request
-							ioQueue.enqueueAndSleep(1); // relinquish CPU to another ready thread
-						}
+                            // thread is waiting for the disk to accept a request
+                            ioQueue.enqueueAndSleep(1); // relinquish CPU to another ready thread
+                        }
                         // now check to ensure disk is not busy
                         while (disk.testAndResetReady() == false) {
-							// thread is waiting for the disk to complete a service
-                        	ioQueue.enqueueAndSleep(2); // relinquish CPU to another ready thread
-						}
+                            // thread is waiting for the disk to complete a service
+                            ioQueue.enqueueAndSleep(2); // relinquish CPU to another ready thread
+                        }
                         // now you can access data in buffer
                         return OK;
                     case RAWWRITE: // write a block of data to disk

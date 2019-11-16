@@ -30,7 +30,7 @@ public class QueueNode {
             }
         }
 
-        // Return the process id at the beginning of the pid vector.
+        // Return the first pid in the PIDVector.
         Integer PID = (Integer)this.PIDVector.remove(0);
         return PID;
     }
