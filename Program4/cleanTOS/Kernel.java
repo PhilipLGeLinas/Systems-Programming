@@ -5,6 +5,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Kernel {
+
 	public static final int INTERRUPT_SOFTWARE = 1;
 	public static final int INTERRUPT_DISK = 2;
 	public static final int INTERRUPT_IO = 3;

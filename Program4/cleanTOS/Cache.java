@@ -7,13 +7,14 @@ import java.util.Vector;
 public class Cache {
 
     private int blockSize;
-    private Vector pages;
+    private Block[] pageTable = null;
     private int victim;
-    private Cache.Entry[] pageTable = null;
+    private Vector pages;
 
     // Allocates a cacheBlocks number of cache blocks,
     // each containing blockSize-byte data, on memory.
     public Cache(int blockSize, int cacheBlocks) {
+
         this.blockSize = blockSize;
         this.pages = new Vector();
 
@@ -22,44 +23,44 @@ public class Cache {
             this.pages.addElement(arr);
         }
 
+        this.pageTable = new Block[cacheBlocks];
         this.victim = cacheBlocks - 1;
-        this.pageTable = new Cache.Entry[cacheBlocks];
 
         for(int i = 0; i < cacheBlocks; ++i) {
-            this.pageTable[i] = new Cache.Entry();
+            this.pageTable[i] = new Block();
         }
 
     }
 
     // Reads into the buffer[] array the cache block specified by blockId from the disk cache if it is in cache.
     // Otherwise, reads the corresponding disk block from the disk device. Upon an error, returns false.
-    public synchronized boolean read(int var1, byte[] var2) {
-        if (var1 < 0) {
-            SysLib.cerr("threadOS: a wrong blockId for cread\n");
+    public synchronized boolean read(int blockId, byte[] buffer) {
+        if (blockId < 0) {
+            SysLib.cerr("Invalid blockId!\n");
             return false;
         } else {
-            int var3;
-            byte[] var4;
-            for(var3 = 0; var3 < this.pageTable.length; ++var3) {
-                if (this.pageTable[var3].frame == var1) {
-                    var4 = (byte[])((byte[])this.pages.elementAt(var3));
-                    System.arraycopy(var4, 0, var2, 0, this.blockSize);
-                    this.pageTable[var3].reference = true;
+            byte[] arr;
+            for(int i = 0; i < this.pageTable.length; ++i) {
+                if (this.pageTable[i].frame == blockId) {
+                    arr = (byte[])((byte[])this.pages.elementAt(i));
+                    System.arraycopy(arr, 0, buffer, 0, this.blockSize);
+                    this.pageTable[i].reference = true;
                     return true;
                 }
             }
 
-            if ((var3 = this.findFreePage()) == -1) {
-                var3 = this.nextVictim();
+            if ((i = this.findFreePage()) == -1) {
+                i = this.nextVictim();
             }
 
-            this.writeBack(var3);
-            SysLib.rawread(var1, var2);
-            var4 = new byte[this.blockSize];
-            System.arraycopy(var2, 0, var4, 0, this.blockSize);
-            this.pages.set(var3, var4);
-            this.pageTable[var3].frame = var1;
-            this.pageTable[var3].reference = true;
+            this.writeBack(i);
+            SysLib.rawread(blockId, buffer);
+            arr = new byte[this.blockSize];
+            System.arraycopy(buffer, 0, arr, 0, this.blockSize);
+            this.pages.set(i, arr);
+            this.pageTable[i].frame = blockId;
+            this.pageTable[i].reference = true;
+
             return true;
         }
     }
@@ -67,35 +68,34 @@ public class Cache {
     // Writes the buffer[] array contents to the cache block specified by blockId from the disk cache if it is in cache.
     // Otherwise finds a free cache block and writes the buffer[] contents on it. No write through.
     // Upon an error, returns false.
-    public synchronized boolean write(int var1, byte[] var2) {
-        if (var1 < 0) {
-            SysLib.cerr("threadOS: a wrong blockId for cwrite\n");
+    public synchronized boolean write(int blockId, byte[] buffer) {
+        if (blockId < 0) {
+            SysLib.cerr("Invalid blockId!\n");
             return false;
         } else {
-            int var3;
-            byte[] var4;
-            for(var3 = 0; var3 < this.pageTable.length; ++var3) {
-                if (this.pageTable[var3].frame == var1) {
-                    var4 = new byte[this.blockSize];
-                    System.arraycopy(var2, 0, var4, 0, this.blockSize);
-                    this.pages.set(var3, var4);
-                    this.pageTable[var3].reference = true;
-                    this.pageTable[var3].dirty = true;
+            byte[] arr;
+            for(int i = 0; i < this.pageTable.length; ++i) {
+                if (this.pageTable[i].frame == blockId) {
+                    arr = new byte[this.blockSize];
+                    System.arraycopy(buffer, 0, arr, 0, this.blockSize);
+                    this.pages.set(i, arr);
+                    this.pageTable[i].reference = true;
+                    this.pageTable[i].dirty = true;
                     return true;
                 }
             }
 
-            if ((var3 = this.findFreePage()) == -1) {
-                var3 = this.nextVictim();
+            if ((i = this.findFreePage()) == -1) {
+                i = this.nextVictim();
             }
 
-            this.writeBack(var3);
-            var4 = new byte[this.blockSize];
-            System.arraycopy(var2, 0, var4, 0, this.blockSize);
-            this.pages.set(var3, var4);
-            this.pageTable[var3].frame = var1;
-            this.pageTable[var3].reference = true;
-            this.pageTable[var3].dirty = true;
+            this.writeBack(i);
+            arr = new byte[this.blockSize];
+            System.arraycopy(buffer, 0, arr, 0, this.blockSize);
+            this.pages.set(i, arr);
+            this.pageTable[i].frame = blockId;
+            this.pageTable[i].reference = true;
+            this.pageTable[i].dirty = true;
             return true;
         }
     }
@@ -103,8 +103,8 @@ public class Cache {
     // Writes back all dirty blocks to Disk.java and thereafter forces Disk.java to write back all contents
     // to the DISK file. Maintains clean block copies in Cache.java. Called when shutting down ThreadOS.
     public synchronized void sync() {
-        for(int var1 = 0; var1 < this.pageTable.length; ++var1) {
-            this.writeBack(var1);
+        for(int i = 0; i < this.pageTable.length; ++i) {
+            this.writeBack(i);
         }
 
         SysLib.sync();
@@ -113,25 +113,27 @@ public class Cache {
     // Invalidates all cached blocks. Called when you keep running a different test
     // case without receiving any caching effects incurred by the previous test.
     public synchronized void flush() {
-        for(int var1 = 0; var1 < this.pageTable.length; ++var1) {
-            this.writeBack(var1);
-            this.pageTable[var1].reference = false;
-            this.pageTable[var1].frame = -1;
+        for(int i = 0; i < this.pageTable.length; ++i) {
+            this.writeBack(i);
+            this.pageTable[i].reference = false;
+            this.pageTable[i].frame = -1;
         }
 
         SysLib.sync();
     }
 
+    // Searches for the first page that is set to invalid.
     private int findFreePage() {
-        for(int var1 = 0; var1 < this.pageTable.length; ++var1) {
-            if (this.pageTable[var1].frame == -1) {
-                return var1;
+        for(int i = 0; i < this.pageTable.length; ++i) {
+            if (this.pageTable[i].frame == -1) {
+                return i;
             }
         }
 
         return -1;
     }
 
+    // Searches for the next page to be replaced.
     private int nextVictim() {
         while(true) {
             this.victim = (this.victim + 1) % this.pageTable.length;
@@ -143,22 +145,26 @@ public class Cache {
         }
     }
 
-    private void writeBack(int var1) {
-        if (this.pageTable[var1].frame != -1 && this.pageTable[var1].dirty) {
-            byte[] var2 = (byte[])((byte[])this.pages.elementAt(var1));
-            SysLib.rawwrite(this.pageTable[var1].frame, var2);
-            this.pageTable[var1].dirty = false;
+    // Writes data back to the disk before replacement.
+    private void writeBack(int index) {
+        if (this.pageTable[index].frame != -1 && this.pageTable[index].dirty) {
+            byte[] current = (byte[])((byte[])this.pages.elementAt(index));
+            SysLib.rawwrite(this.pageTable[index].frame, current);
+            this.pageTable[index].dirty = false;
         }
 
     }
+}
 
-    private class Entry {
-        public static final int INVALID = -1;
-        public boolean reference = false;
-        public boolean dirty = false;
-        public int frame = -1;
+// A block containing a reference and dirty bit.
+// Used to implement the enhanced second-chance algorithm.
+public class Block {
 
-        public Entry() {
-        }
+    public boolean reference = false;
+    public boolean dirty = false;
+    public int frame = -1;
+
+    public Block() {
+
     }
 }
